@@ -2,4 +2,3 @@ joblib==1.4.0
 streamlit==1.38.0
 scikit-learn
 pandas==2.2.2
-numpy
