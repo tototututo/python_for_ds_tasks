@@ -77,23 +77,23 @@ with tab1:
     location_default = 'Sydney' if 'Sydney' in locations else locations[0]
 
     input_location = st.selectbox(
-        "Місцезнаходження (Location)",
+        "Місцезнаходження",
         options=locations,
         index=locations.index(location_default)
     )
     
-    input_min_temp = st.slider("Мінімальна температура (°C) (MinTemp)", min_value=TEMP_RANGE[0], max_value=TEMP_RANGE[1], value=15.0)
-    input_max_temp = st.slider("Максимальна температура (°C) (MaxTemp)", min_value=TEMP_RANGE[0], max_value=TEMP_RANGE[1], value=25.0)
-    input_rainfall = st.slider("Кількість опадів (мм) (Rainfall)", min_value=RAIN_RANGE[0], max_value=RAIN_RANGE[1], value=0.0)
-    input_rain_today = st.selectbox("Сьогодні був дощ? (RainToday)", options=['No', 'Yes'], index=0)
+    input_min_temp = st.slider("Мінімальна температура (°C)", min_value=TEMP_RANGE[0], max_value=TEMP_RANGE[1], value=15.0)
+    input_max_temp = st.slider("Максимальна температура (°C)", min_value=TEMP_RANGE[0], max_value=TEMP_RANGE[1], value=25.0)
+    input_rainfall = st.slider("Кількість опадів (мм)", min_value=RAIN_RANGE[0], max_value=RAIN_RANGE[1], value=0.0)
+    input_rain_today = st.selectbox("Сьогодні був дощ?", options=['No', 'Yes'], index=0)
 
 with tab2:
     st.header("Вологість та Тиск")
     
-    input_humidity9am = st.slider("Вологість о 9 ранку (%) (Humidity9am)", min_value=HUMIDITY_RANGE[0], max_value=HUMIDITY_RANGE[1], value=60.0)
-    input_humidity3pm = st.slider("Вологість о 3 дня (%) (Humidity3pm)", min_value=HUMIDITY_RANGE[0], max_value=HUMIDITY_RANGE[1], value=40.0)
-    input_pressure9am = st.slider("Тиск о 9 ранку (hPa) (Pressure9am)", min_value=PRESSURE_RANGE[0], max_value=PRESSURE_RANGE[1], value=1015.0)
-    input_pressure3pm = st.slider("Тиск о 3 дня (hPa) (Pressure3pm)", min_value=PRESSURE_RANGE[0], max_value=PRESSURE_RANGE[1], value=1012.0)
+    input_humidity9am = st.slider("Вологість о 9 ранку (%)", min_value=HUMIDITY_RANGE[0], max_value=HUMIDITY_RANGE[1], value=60.0)
+    input_humidity3pm = st.slider("Вологість о 3 дня (%)", min_value=HUMIDITY_RANGE[0], max_value=HUMIDITY_RANGE[1], value=40.0)
+    input_pressure9am = st.slider("Тиск о 9 ранку (hPa)", min_value=PRESSURE_RANGE[0], max_value=PRESSURE_RANGE[1], value=1015.0)
+    input_pressure3pm = st.slider("Тиск о 3 дня (hPa)", min_value=PRESSURE_RANGE[0], max_value=PRESSURE_RANGE[1], value=1012.0)
     
 with tab3:
     st.header("Вітер та Хмарність")
@@ -101,22 +101,22 @@ with tab3:
     wind_dirs = sorted([col.split('_')[1] for col in encoded_cols if col.startswith('WindGustDir_')])
     wind_dir_default = 'W' if 'W' in wind_dirs else wind_dirs[0]
 
-    input_wind_gust_dir = st.selectbox("Напрямок пориву вітру (WindGustDir)", options=wind_dirs, index=wind_dirs.index(wind_dir_default))
-    input_wind_gust_speed = st.slider("Швидкість пориву вітру (км/год) (WindGustSpeed)", min_value=WIND_RANGE[0], max_value=WIND_RANGE[1], value=40.0)
+    input_wind_gust_dir = st.selectbox("Напрямок пориву вітру", options=wind_dirs, index=wind_dirs.index(wind_dir_default))
+    input_wind_gust_speed = st.slider("Швидкість пориву вітру (км/год)", min_value=WIND_RANGE[0], max_value=WIND_RANGE[1], value=40.0)
 
-    input_cloud9am = st.slider("Хмарність о 9 ранку (Cloud9am)", min_value=CLOUD_RANGE[0], max_value=CLOUD_RANGE[1], value=4.0)
-    input_cloud3pm = st.slider("Хмарність о 3 дня (Cloud3pm)", min_value=CLOUD_RANGE[0], max_value=CLOUD_RANGE[1], value=4.0)
+    input_cloud9am = st.slider("Хмарність о 9 ранку", min_value=CLOUD_RANGE[0], max_value=CLOUD_RANGE[1], value=4.0)
+    input_cloud3pm = st.slider("Хмарність о 3 дня", min_value=CLOUD_RANGE[0], max_value=CLOUD_RANGE[1], value=4.0)
 
 with tab4:
-    input_evaporation = st.number_input("Випаровування (мм) (Evaporation)", value=5.0)
-    input_sunshine = st.number_input("Сонячне сяйво (години) (Sunshine)", value=7.0)
+    input_evaporation = st.number_input("Випаровування (мм)", value=5.0)
+    input_sunshine = st.number_input("Сонячне сяйво (години)", value=7.0)
     
-    input_wind_speed9am = st.number_input("Швидкість вітру о 9 ранку (км/год) (WindSpeed9am)", value=10.0)
-    input_wind_speed3pm = st.number_input("Швидкість вітру о 3 дня (км/год) (WindSpeed3pm)", value=15.0)
-    input_wind_dir9am = st.selectbox("Напрямок вітру о 9 ранку (WindDir9am)", options=wind_dirs, index=wind_dirs.index(wind_dir_default))
-    input_wind_dir3pm = st.selectbox("Напрямок вітру о 3 дня (WindDir3pm)", options=wind_dirs, index=wind_dirs.index(wind_dir_default))
-    input_temp9am = st.slider("Температура о 9 ранку (°C) (Temp9am)", min_value=TEMP_RANGE[0], max_value=TEMP_RANGE[1], value=input_min_temp + 5)
-    input_temp3pm = st.slider("Температура о 3 дня (°C) (Temp3pm)", min_value=TEMP_RANGE[0], max_value=TEMP_RANGE[1], value=input_max_temp - 5)
+    input_wind_speed9am = st.number_input("Швидкість вітру о 9 ранку (км/год)", value=10.0)
+    input_wind_speed3pm = st.number_input("Швидкість вітру о 3 дня (км/год)", value=15.0)
+    input_wind_dir9am = st.selectbox("Напрямок вітру о 9 ранку", options=wind_dirs, index=wind_dirs.index(wind_dir_default))
+    input_wind_dir3pm = st.selectbox("Напрямок вітру о 3 дня", options=wind_dirs, index=wind_dirs.index(wind_dir_default))
+    input_temp9am = st.slider("Температура о 9 ранку (°C)", min_value=TEMP_RANGE[0], max_value=TEMP_RANGE[1], value=input_min_temp + 5)
+    input_temp3pm = st.slider("Температура о 3 дня (°C)", min_value=TEMP_RANGE[0], max_value=TEMP_RANGE[1], value=input_max_temp - 5)
     
 # Кнопка прогнозування
 st.markdown("---")
