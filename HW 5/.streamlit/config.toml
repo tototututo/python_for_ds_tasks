@@ -1,0 +1,11 @@
+[theme]
+# Головний колір
+primaryColor="#4ECDC4" 
+# Колір фону (темний)
+backgroundColor="#18191a" 
+# Колір елементів
+secondaryBackgroundColor="#242526"
+# Колір тексту
+textColor="#FFFFFF"
+# Сімейство шрифтів
+font="sans serif"
